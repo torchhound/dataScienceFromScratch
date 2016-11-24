@@ -50,4 +50,14 @@ def interquartilRange(x):
 	'''Difference between 75th percentile and 25th percentile'''
 	return quartile(x, 0.75) - quartile(x, 0.25)
 
+def covariance(x, y):
+	n = len(x)
+	return dot(deMean(x), deMean(y)) / (n - 1)
 
+def correlation(x, y):
+	stdevX = standardDeviation(x)
+	stdevY = standardDeviation(y)
+	if stdevX > 0 and stdevY > 0:
+		return covariance(x, y) / stdevX / stdevY
+	else:
+		return 0
